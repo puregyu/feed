@@ -20,6 +20,7 @@ public class FeedRepository {
 	
 	// == Feed ==
 	public List<Feed> findAllFeeds(int startIndex, int pageSize) {
+		
 		return em.createQuery("select f from Feed f order by f.date desc", Feed.class)
 				.setFirstResult(startIndex)
 				.setMaxResults(pageSize)
@@ -27,15 +28,18 @@ public class FeedRepository {
 	}
 
 	public Feed findOneFeed(Long feedId) {
+		
 		return em.find(Feed.class, feedId);
 	}
 
 	// == FeedLike ==
 	public void saveLike(FeedLike feedLike) {
+		
 		em.persist(feedLike);
 	}
 
 	public FeedLike findOneLike(Long feedId, Long userId) {
+		
 		return (FeedLike) em.createQuery("select fl from FeedLike fl where fl.feed.id=:feedId and fl.userId =:userId")
 				.setParameter("feedId", feedId)
 				.setParameter("userId", userId)
@@ -43,24 +47,29 @@ public class FeedRepository {
 	}
 	
 	public void deleteLike(FeedLike feedLike) {
+		
 		em.remove(feedLike);
 	}
 
 	// == FeedComment ==
 	public void saveComment(FeedComment feedComment) {
+		
 		em.persist(feedComment);
 	}
 
 	public FeedComment findComment(Long commentId) {
+		
 		return em.find(FeedComment.class, commentId);
 	}
 
 	public void deleteComment(FeedComment feedComment) {
+		
 		em.remove(feedComment);
 	}
 
 	// == FeedShared ==
 	public void saveShared(FeedShared feedShared) {
+		
 		em.persist(feedShared);
 	}
 }

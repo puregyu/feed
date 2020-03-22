@@ -24,7 +24,7 @@ public class FeedShared {
 	@Id @GeneratedValue
 	private Long id;
 	private LocalDateTime date;
-	private Long userid;
+	private Long userId;
 	@Enumerated(EnumType.STRING)
 	private SharedTarget target;
 	
@@ -42,7 +42,7 @@ public class FeedShared {
 		
 		FeedShared feedShared = new FeedShared();
 		feedShared.setFeed(feed);
-		feedShared.setUserid(feedSharedDto.getUserid());
+		feedShared.setUserId(feedSharedDto.getUserId());
 		feedShared.setTarget(targetSns);
 		feedShared.setDate(LocalDateTime.now());
 		return feedShared;
